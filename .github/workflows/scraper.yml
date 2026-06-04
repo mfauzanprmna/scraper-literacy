@@ -1,0 +1,36 @@
+name: LITERASENSE Scraper
+
+on:
+  schedule:
+    # Setiap hari jam 01:00 WIB (18:00 UTC)
+    - cron: '0 18 * * *'
+
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+          pip install beautifulsoup4
+          pip install yt-dlp
+          pip install mysql-connector-python
+
+      - name: Run Scraper
+        env:
+          API_URL: ${{ secrets.LARAVEL_API_URL }}
+          API_KEY: ${{ secrets.SCRAPER_API_KEY }}
+        run: |
+          python simple_scraper.py

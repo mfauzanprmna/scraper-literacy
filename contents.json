@@ -1,0 +1,34 @@
+[
+  {
+    "id": 4,
+    "title": "Beyond principlism: Practical strategies for ethical AI use in research practices",
+    "url": "http://arxiv.org/abs/2401.15284v6",
+    "source": "journal",
+    "dimension": "Conceptual Understanding",
+    "confidence": 0.09
+  },
+  {
+    "id": 3,
+    "title": "AI Fairness – Derek Leben | IASEAI 2025",
+    "url": "https://www.youtube.com/watch?v=OXcEaMLRj-4",
+    "source": "youtube",
+    "dimension": "Critical Thinking",
+    "confidence": 0.14
+  },
+  {
+    "id": 2,
+    "title": "I Built a Neural Network from Scratch",
+    "url": "https://www.youtube.com/watch?v=cAkMcPfY_Ns",
+    "source": "youtube",
+    "dimension": "Application & Skills",
+    "confidence": 0.21
+  },
+  {
+    "id": 1,
+    "title": "Machine Learning for Everybody – Full Course",
+    "url": "https://www.youtube.com/watch?v=i_LwzRVP7bg",
+    "source": "youtube",
+    "dimension": "Application & Skills",
+    "confidence": 0.21
+  }
+]
