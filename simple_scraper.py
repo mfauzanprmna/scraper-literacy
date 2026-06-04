@@ -6,7 +6,7 @@ from yt_dlp import YoutubeDL
 # CONFIG
 # ==========================================
 
-API_URL = "http://127.0.0.1:8000/api/scraping/import"
+API_URL = "https://bijak-ai.web.id/literasense/api/scraping/import"
 API_KEY = "4d7c8e2f1a9b3c5d6e8f7a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1"
 
 # ==========================================
