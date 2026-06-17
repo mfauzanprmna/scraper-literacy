@@ -25,7 +25,8 @@ jobs:
 
       - name: Run Scraper
         env:
-          API_URL: ${{ secrets.LARAVEL_API_URL }}
-          API_KEY: ${{ secrets.SCRAPER_API_KEY }}
+          API_URL:         ${{ secrets.LARAVEL_API_URL }}
+          API_KEY:         ${{ secrets.SCRAPER_API_KEY }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         run: |
-          python simple_scraper.py
+          python scraper.py

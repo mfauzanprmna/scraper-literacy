@@ -1,17 +1,20 @@
 import os
 import requests
 from bs4 import BeautifulSoup
-from yt_dlp import YoutubeDL
 
 # ==========================================
 # CONFIG
 # ==========================================
 
-API_URL = os.environ.get("API_URL", "https://bijak-ai.web.id/literasense/api/scraping/import")
-API_KEY = os.environ.get("API_KEY", "")
+API_URL         = os.environ.get("API_URL", "https://bijak-ai.web.id/literasense/api/scraping/import")
+API_KEY         = os.environ.get("API_KEY", "")
+YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", "")
 
 if not API_KEY:
     raise EnvironmentError("API_KEY environment variable is not set.")
+
+if not YOUTUBE_API_KEY:
+    raise EnvironmentError("YOUTUBE_API_KEY environment variable is not set.")
 
 # ==========================================
 # DIMENSIONS
@@ -113,44 +116,54 @@ class SimpleClassifier:
         return best_dimension, round(scores[best_dimension], 2)
 
 # ==========================================
-# YOUTUBE
+# YOUTUBE  (YouTube Data API v3)
 # ==========================================
 
 class YouTubeScraper:
+
+    BASE_URL = "https://www.googleapis.com/youtube/v3/search"
 
     def search(self, keyword):
 
         try:
 
-            with YoutubeDL({
-                "quiet": True,
-                "no_warnings": True
-            }) as ydl:
+            response = requests.get(
+                self.BASE_URL,
+                params={
+                    "part":       "snippet",
+                    "q":          keyword,
+                    "maxResults": 5,
+                    "type":       "video",
+                    "key":        YOUTUBE_API_KEY,
+                },
+                timeout=15
+            )
 
-                results = ydl.extract_info(
-                    f"ytsearch5:{keyword}",
-                    download=False
-                )
+            response.raise_for_status()
+            items = response.json().get("items", [])
 
             data = []
 
-            for video in results["entries"]:
+            for item in items:
+
+                video_id = item["id"]["videoId"]
+                snippet  = item["snippet"]
 
                 data.append({
                     "title":
-                        video.get("title", ""),
+                        snippet.get("title", ""),
 
                     "url":
-                        f"https://www.youtube.com/watch?v={video.get('id')}",
+                        f"https://www.youtube.com/watch?v={video_id}",
 
                     "description":
-                        (video.get("description") or "")[:500],
+                        snippet.get("description", "")[:500],
 
                     "author":
-                        video.get("uploader", ""),
+                        snippet.get("channelTitle", ""),
 
                     "date":
-                        video.get("upload_date", ""),
+                        snippet.get("publishedAt", ""),
 
                     "source":
                         "youtube"
@@ -205,7 +218,7 @@ class JournalScraper:
 
                     "author":
                         ", ".join([
-                            a.name.text.strip()
+                            a.find("name").text.strip()
                             for a in entry.find_all("author")
                         ]),
 
@@ -235,7 +248,7 @@ def send_to_laravel(contents):
             API_URL,
             headers={
                 "X-API-KEY": API_KEY,
-                "Accept": "application/json"
+                "Accept":    "application/json"
             },
             json={
                 "contents": contents
@@ -259,8 +272,8 @@ class SimpleScraper:
     def __init__(self):
 
         self.classifier = SimpleClassifier()
-        self.youtube = YouTubeScraper()
-        self.journal = JournalScraper()
+        self.youtube    = YouTubeScraper()
+        self.journal    = JournalScraper()
 
     def classify_content(self, content):
 
@@ -273,7 +286,7 @@ class SimpleScraper:
             self.classifier.classify(text)
         )
 
-        content["dimension"] = dimension
+        content["dimension"]  = dimension
         content["confidence"] = confidence
 
         print(

@@ -1,6 +1,4 @@
 # BijakAI Scraper — Runtime Dependencies
-# Hanya package yang dibutuhkan scraper.py untuk berjalan di CI
-# Install: pip install -r requirements.txt
 
 # HTTP Requests
 requests>=2.31.0
@@ -8,9 +6,6 @@ requests>=2.31.0
 # HTML / XML Parsing
 beautifulsoup4>=4.12.0
 lxml>=4.9.0
-
-# YouTube
-yt-dlp>=2023.9.0
 
 # Environment variables
 python-dotenv>=1.0.0
