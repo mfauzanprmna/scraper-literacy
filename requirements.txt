@@ -1,70 +1,19 @@
-# BijakAI ML Content Scraper & Classifier
-# Full Development Dependencies
-# Install: pip install -r requirements-dev.txt
+# BijakAI Scraper — Runtime Dependencies
+# Hanya package yang dibutuhkan scraper.py untuk berjalan di CI
+# Install: pip install -r requirements.txt
 
-# ──────────────────────────────────────────────────────────
-# Runtime (sama dengan requirements.txt)
-# ──────────────────────────────────────────────────────────
+# HTTP Requests
+requests>=2.31.0
 
--r requirements.txt
+# HTML / XML Parsing
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
 
-# ──────────────────────────────────────────────────────────
-# Core ML & NLP
-# ──────────────────────────────────────────────────────────
+# YouTube
+yt-dlp>=2023.9.0
 
-sentence-transformers>=2.2.2
-transformers>=4.30.0
-torch>=2.0.0
-numpy>=1.24.0
-scipy>=1.10.0
+# Environment variables
+python-dotenv>=1.0.0
 
-# Machine Learning & Data Processing
-scikit-learn>=1.3.0
-pandas>=2.0.0
-matplotlib>=3.7.0
-seaborn>=0.12.0
-plotly>=5.14.0
-
-# ──────────────────────────────────────────────────────────
-# Web Scraping (extended)
-# ──────────────────────────────────────────────────────────
-
-aiohttp>=3.8.0
-feedparser>=6.0.10
-
-# Web Drivers (untuk selenium-based scraping)
-selenium>=4.10.0
-
-# ──────────────────────────────────────────────────────────
-# Web Framework & API
-# ──────────────────────────────────────────────────────────
-
-flask>=2.3.0
-flask-cors>=4.0.0
-flask-restful>=0.3.10
-
-# ──────────────────────────────────────────────────────────
-# Database
-# ──────────────────────────────────────────────────────────
-
-mysql-connector-python>=8.0.33
-psycopg2-binary>=2.9.0
-sqlalchemy>=2.0.0
-
-# ──────────────────────────────────────────────────────────
-# Utilities
-# ──────────────────────────────────────────────────────────
-
-python-json-logger>=2.0.7
-
-# ──────────────────────────────────────────────────────────
-# Testing & Development
-# ──────────────────────────────────────────────────────────
-
-pytest>=7.4.0
-pytest-cov>=4.1.0
-black>=23.7.0
-flake8>=6.0.0
-pylint>=2.17.0
-ipython>=8.14.0
-ipdb>=0.13.0
+# Date/Time
+python-dateutil>=2.8.0
