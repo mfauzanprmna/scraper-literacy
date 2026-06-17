@@ -28,4 +28,4 @@ jobs:
           API_URL: ${{ secrets.LARAVEL_API_URL }}
           API_KEY: ${{ secrets.SCRAPER_API_KEY }}
         run: |
-          python scraper.py
+          python simple_scraper.py
