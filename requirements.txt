@@ -1,12 +1,17 @@
 # BijakAI ML Content Scraper & Classifier
-# Python Dependencies
-# Install with: pip install -r requirements.txt
+# Full Development Dependencies
+# Install: pip install -r requirements-dev.txt
+
+# ──────────────────────────────────────────────────────────
+# Runtime (sama dengan requirements.txt)
+# ──────────────────────────────────────────────────────────
+
+-r requirements.txt
 
 # ──────────────────────────────────────────────────────────
 # Core ML & NLP
 # ──────────────────────────────────────────────────────────
 
-# NLP & Transformer Models
 sentence-transformers>=2.2.2
 transformers>=4.30.0
 torch>=2.0.0
@@ -21,31 +26,19 @@ seaborn>=0.12.0
 plotly>=5.14.0
 
 # ──────────────────────────────────────────────────────────
-# Web Scraping
+# Web Scraping (extended)
 # ──────────────────────────────────────────────────────────
 
-# HTTP Requests
-requests>=2.31.0
 aiohttp>=3.8.0
-
-# HTML Parsing
-beautifulsoup4>=4.12.0
-lxml>=4.9.0
-
-# RSS Feed Parsing
 feedparser>=6.0.10
 
-# YouTube
-yt-dlp>=2023.9.0
-
-# Web Drivers (optional, untuk selenium-based scraping)
+# Web Drivers (untuk selenium-based scraping)
 selenium>=4.10.0
 
 # ──────────────────────────────────────────────────────────
 # Web Framework & API
 # ──────────────────────────────────────────────────────────
 
-# Flask API Server
 flask>=2.3.0
 flask-cors>=4.0.0
 flask-restful>=0.3.10
@@ -54,56 +47,24 @@ flask-restful>=0.3.10
 # Database
 # ──────────────────────────────────────────────────────────
 
-# SQLite (built-in dengan Python)
-
-# MySQL/MariaDB (optional)
 mysql-connector-python>=8.0.33
-
-# PostgreSQL (optional)
 psycopg2-binary>=2.9.0
-
-# SQLAlchemy ORM
 sqlalchemy>=2.0.0
 
 # ──────────────────────────────────────────────────────────
 # Utilities
 # ──────────────────────────────────────────────────────────
 
-# Environment variables
-python-dotenv>=1.0.0
-
-# Logging & Monitoring
-python-logging>=2.0.0
-
-# Date/Time
-python-dateutil>=2.8.0
-
-# JSON processing
 python-json-logger>=2.0.7
 
 # ──────────────────────────────────────────────────────────
 # Testing & Development
 # ──────────────────────────────────────────────────────────
 
-# Testing
 pytest>=7.4.0
 pytest-cov>=4.1.0
-
-# Code Quality
 black>=23.7.0
 flake8>=6.0.0
 pylint>=2.17.0
-
-# Debugging
 ipython>=8.14.0
 ipdb>=0.13.0
-
-# ──────────────────────────────────────────────────────────
-# Optional: GPU Support
-# ──────────────────────────────────────────────────────────
-
-# For CUDA support (if using GPU):
-# torch-cuda == managed by PyTorch directly
-
-# For Apple Silicon (MPS):
-# torch built with MPS support
